@@ -1,5 +1,12 @@
 import asyncio
 from pyppeteer import launch
+import ipaddress
+
+
+def extract_ips(ipsn):
+    subnet = ipaddress.ip_network(ipsn)
+    ip_list = [str(ip) for ip in subnet.hosts()]
+    return ip_list
 
 
 async def bgpasnbrowser(keyword):
